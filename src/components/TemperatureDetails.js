@@ -10,7 +10,7 @@ function TemperatureDetails() {
                 <p>Clear</p>
             </div>
             <div className='flex flex-row justify-between items-center text-white py-3 w-full'>
-                <img src="http://openweatehrmap.org/img/wn/01d@2x.png" alt="img" />
+                <img src="//cdn.weatherapi.com/weather/64x64/day/113.png" alt="img" className='w-18' />
                 <p className='text-white text-4xl font-montserrat ml-16'>
                     34&deg;
                 </p>
