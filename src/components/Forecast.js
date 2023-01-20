@@ -9,8 +9,12 @@ function Forecast({ title, weather, units }) {
                 <p className='text-white font-medium uppercase px-3'>{title}</p>
             </div>
             <hr className='my-2' />
+
+            {/* Conditional rendering to enable carousel for the hourly forecast */}
             {title === "Hourly Forecast" ? (
                 <div className='flex flex-row justify-between items-center text-white mb-8 overflow-hidden'>
+
+                    {/* Splide is container and SplideSlide is each component */}
                     <Splide options={{
                         perPage: 7,
                         arrows: false,

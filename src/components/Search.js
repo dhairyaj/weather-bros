@@ -2,34 +2,41 @@ import React, { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import { SlLocationPin } from 'react-icons/sl';
 
-function Search({setQuery, units, setUnits}) {
+function Search({ setQuery, units, setUnits }) {
 
+    // Set the city from the search bar
     const [city, setCity] = useState("");
 
+    // Enable state change on keypress
     const handleChange = (e) => {
         let unformattedCityValue = e.target.value;
         const formattedCityvalue = unformattedCityValue.charAt(0).toUpperCase() + unformattedCityValue.slice(1);
         setCity(formattedCityvalue);
     }
 
+    // Set the city in state, fetch its weather and clear the search bar
     const handleSearch = () => {
-        if(city !== "") {
-            setQuery({q: city});
+        if (city !== "") {
+            setQuery({ q: city });
             setCity("");
         }
     };
 
+    // Switch between celsius (metric) or fahrenheit (imperial)
     const toggleUnits = (e) => {
         setUnits(e.target.name);
     }
 
+    // Fetch the user's current location and fetch weather if permission is granted to access location in the browser
     const handleCurrentLocation = () => {
-        if(navigator.geolocation) {
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 let lat = position.coords.latitude;
                 let lon = position.coords.longitude;
 
-                setQuery({q: `${lat},${lon}`});
+                setQuery({ q: `${lat},${lon}` });
+
+                setCity(""); 
             })
         }
     }
