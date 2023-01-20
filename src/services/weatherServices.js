@@ -2,9 +2,6 @@ import { DateTime } from "luxon";
 
 const BASE_URL = "http://api.weatherapi.com/v1";
 
-// http://api.weatherapi.com/v1/current.json?key=c207019ff0f743568b8193942231901&q=London
-// http://api.weatherapi.com/v1/forecast.xml?key=c207019ff0f743568b8193942231901&q=London&days=7
-
 const weatherData = (queryParams) => {
     const url = new URL(BASE_URL + "/forecast.json");
     url.search = new URLSearchParams({ key: process.env.REACT_APP_API_KEY, ...queryParams, days: 8 });
@@ -15,7 +12,7 @@ const weatherData = (queryParams) => {
 const weatherDataFormat = (data) => {
     const {
         location: { name, country, tz_id, localtime_epoch },
-        current: { temp_c, temp_f, condition: { text, icon }, wind_kph, humidity, feelslike_c, feelslike_f },
+        current: { temp_c, temp_f, condition: { text, icon }, wind_kph, wind_mph, humidity, feelslike_c, feelslike_f },
     } = data;
 
     let {
@@ -49,7 +46,7 @@ const weatherDataFormat = (data) => {
         }
     });
 
-    return { name, country, tz_id, localtime_epoch, temp_c, temp_f, text, icon, wind_kph, humidity, feelslike_c, feelslike_f, maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, sunrise, sunset, forecastday, hour }
+    return { name, country, tz_id, localtime_epoch, temp_c, temp_f, text, icon, wind_kph, wind_mph, humidity, feelslike_c, feelslike_f, maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, sunrise, sunset, forecastday, hour }
 };
 
 const getFormattedData = async (queryParams) => {

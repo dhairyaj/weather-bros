@@ -3,14 +3,14 @@ import { WiDaySunny, WiSunset, WiThermometer } from "react-icons/wi";
 import { BsDropletHalf, BsWind } from 'react-icons/bs';
 import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 
-function TemperatureDetails({ weather: { text, icon, temp_c, temp_f, wind_kph, humidity, feelslike_c, feelslike_f, maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, sunrise, sunset }, units }) {
+function TemperatureDetails({ weather: { text, icon, temp_c, temp_f, wind_kph, wind_mph, humidity, feelslike_c, feelslike_f, maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, sunrise, sunset }, units }) {
     return (
         <div>
             <div className='flex items-center justify-center py-6 text-xl text-white font-montserrat'>
                 <p>{text}</p>
             </div>
             <div className='flex flex-row justify-between items-center text-white py-3 w-full'>
-                <img src={icon} alt={text} className='w-18' />
+                <img src={icon} alt={text} className='w-20 h-20' />
                 <p className='text-white text-4xl font-montserrat ml-16'>
                     {units === "metric" ? temp_c : temp_f}&deg;
                 </p>
