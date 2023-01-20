@@ -40,7 +40,7 @@ function Forecast({ title }) {
                 </div>
                 <div className='flex flex-col items-center justify-center'>
                     <p className='font-extralight text-sm'>04:30 PM</p>
-                    <img src="//cdn.weatherapi.com/weather/64x64/day/113.png" alt="img" className='w-12 my-1' />
+                    <img src="//cdn.weatherapi.com/weather/64x64/night/296.png" alt="img" className='w-12 my-1' />
                     <p className='font-medium'>22&deg;</p>
                 </div>
             </div>
