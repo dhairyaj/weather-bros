@@ -23,7 +23,7 @@ function App() {
   }, [query, units])
 
   return (
-    <div className="max-w-screen-lg mx-auto mt-6 py-4 px-32 bg-gradient-to-tr from-cyan-800 to-slate-500 h-fit shadow-2xl shadow-slate-700 rounded-3xl">
+    <div className="max-w-screen-lg mx-auto mt-6 py-4 px-32 bg-gradient-to-tr from-cyan-800 to-slate-500 h-fit shadow-2xl shadow-slate-700 rounded-3xl overflow-hidden">
 
       <Search setQuery={setQuery} units={units} setUnits={setUnits} />
 

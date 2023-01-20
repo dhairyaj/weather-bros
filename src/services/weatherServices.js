@@ -4,7 +4,7 @@ const BASE_URL = "http://api.weatherapi.com/v1";
 
 const weatherData = (queryParams) => {
     const url = new URL(BASE_URL + "/forecast.json");
-    url.search = new URLSearchParams({ key: process.env.REACT_APP_API_KEY, ...queryParams, days: 8 });
+    url.search = new URLSearchParams({ key: process.env.REACT_APP_API_KEY, ...queryParams, days: 14 });
 
     return fetch(url).then(res => res.json()).then(data => data);
 };
@@ -21,7 +21,7 @@ const weatherDataFormat = (data) => {
 
     let { hour } = forecastday[0];
 
-    hour = hour.slice(1, 8).map(element => {
+    hour = hour.map(element => {
         return {
             time: formatToLocalTime(element.time_epoch, tz_id, 'hh:mm a'),
             condition: element.condition.icon,
@@ -36,9 +36,9 @@ const weatherDataFormat = (data) => {
         astro: { sunrise, sunset },
     } = forecastday[0];
 
-    forecastday = forecastday.slice(1, 8).map(element => {
+    forecastday = forecastday.slice(1, 14).map(element => {
         return {
-            time: formatToLocalTime(element.date_epoch, tz_id, 'ccc'),
+            time: formatToLocalTime(element.date_epoch, tz_id, 'LLL dd'),
             condition: element.day.condition.icon,
             text: element.day.condition.text,
             temperature_c: element.day.avgtemp_c,
