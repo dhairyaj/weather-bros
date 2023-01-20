@@ -17,6 +17,7 @@ Weather-Bros is a weather application made using React.js and Tailwind CSS. It i
 - <a href="https://splidejs.com/guides/getting-started/">Splide</a> (For carousel)
 - <a href="https://www.npmjs.com/package/luxon">Luxon</a> (For Time and Date Formatting)
 - <a href="https://www.weatherapi.com/">React Icons</a>
+- <a href="https://fkhadra.github.io/react-toastify/introduction/">React Toastify</a> (For alerts)
 
 ## Setting up the project
 
