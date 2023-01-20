@@ -14,7 +14,7 @@ const weatherData = (queryParams) => {
 
 const weatherDataFormat = (data) => {
     const {
-        location: { name, country, tz_id, localtime_epoch, localtime },
+        location: { name, country, tz_id, localtime_epoch },
         current: { temp_c, temp_f, condition: { text, icon }, wind_kph, humidity, feelslike_c, feelslike_f },
     } = data;
 
@@ -26,10 +26,11 @@ const weatherDataFormat = (data) => {
 
     hour = hour.slice(1, 8).map(element => {
         return {
-            hourly: formatToLocalTime(element.time_epoch, tz_id, 'hh:mm a'),
-            hourlyCondition: element.condition.icon,
-            hourlyTemperature_c: element.temp_c,
-            hourlyTemperature_f: element.temp_f
+            time: formatToLocalTime(element.time_epoch, tz_id, 'hh:mm a'),
+            condition: element.condition.icon,
+            text: element.condition.text,
+            temperature_c: element.temp_c,
+            temperature_f: element.temp_f
         }
     });
 
@@ -40,14 +41,15 @@ const weatherDataFormat = (data) => {
 
     forecastday = forecastday.slice(1, 8).map(element => {
         return {
-            daily: formatToLocalTime(element.date_epoch, tz_id, 'ccc'),
-            dailyCondition: element.day.condition.icon,
-            dailyTemperature_c: element.day.avgtemp_c,
-            dailyTemperature_f: element.day.avgtemp_f
+            time: formatToLocalTime(element.date_epoch, tz_id, 'ccc'),
+            condition: element.day.condition.icon,
+            text: element.day.condition.text,
+            temperature_c: element.day.avgtemp_c,
+            temperature_f: element.day.avgtemp_f
         }
     });
 
-    return { name, country, tz_id, localtime_epoch, localtime, temp_c, temp_f, text, icon, wind_kph, humidity, feelslike_c, feelslike_f, maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, sunrise, sunset, forecastday, hour }
+    return { name, country, tz_id, localtime_epoch, temp_c, temp_f, text, icon, wind_kph, humidity, feelslike_c, feelslike_f, maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, sunrise, sunset, forecastday, hour }
 };
 
 const getFormattedData = async (queryParams) => {
